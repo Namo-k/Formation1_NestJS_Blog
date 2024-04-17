@@ -11,9 +11,7 @@ export class PostController {
 
   @Get("/add")
   @Render("post/addPost")
-  getAddPost(){
-
-  }
+  getAddPost(){}
 
   @Post("/add")
   async postAddPost(@Body() body : AddPostDto, @Session() session : Record<string, any>){
@@ -26,6 +24,9 @@ export class PostController {
   async getDetailsPost(@Param("id") id:string, @Res() res: Response ){
      try{
        const post = await this.postService.getDetailPost(id);
+       // console.log(post) //Renvoi la valeur post direct
+       // console.log("------")
+       // console.log({post}) //Renvoi l'objet post encapsulé de ces données et comme nom Post
        return {post}
      }catch(e) {
         res.status(404).render("errors/404", {message:e.message});
