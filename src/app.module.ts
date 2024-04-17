@@ -1,9 +1,10 @@
-import { Module } from '@nestjs/common';
+import { Module } from "@nestjs/common";
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { UserModule } from './user/user.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { User } from "./user/user.entity";
+import { Post } from "./post/post.entity";
 import { PostModule } from './post/post.module';
 
 
@@ -15,7 +16,7 @@ import { PostModule } from './post/post.module';
       username: 'root',
       password: 'root',
       database: 'blog',
-      entities: [User],
+      entities: [User, Post],
       synchronize: true,
     }),
     UserModule,
